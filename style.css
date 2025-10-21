@@ -62,12 +62,14 @@ header h1 {
   font-size: 2rem;
   margin: 0;
   font-weight: 600;
+  color: var(--accent-orange);
 }
 
 .tagline {
   font-size: 1.1rem;
   opacity: 0.95;
   margin: 0.5rem 0 0 0;
+  color: var(--accent-orange);
 }
 
 section {
@@ -178,6 +180,31 @@ a {
 a:hover {
   color: var(--accent-orange);
   text-decoration: underline;
+}
+
+.services-download {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.download-btn {
+  display: inline-block;
+  background: var(--accent-orange);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.3);
+}
+
+.download-btn:hover {
+  background: var(--light-orange);
+  color: white;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.4);
 }
 
 footer {

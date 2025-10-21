@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Optimist - Operational Efficiency</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            color-adjust: exact !important;
+        }
+        
+        @page {
+            margin: 0;
+            size: letter;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #1A4D7A !important;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        
+        .container {
+            max-width: 850px;
+            background: white !important;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: #1A4D7A !important;
+            color: white !important;
+            padding: 25px 50px 20px;
+            position: relative;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: white !important;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: -1px;
+            color: #D97706 !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        
+        .tagline {
+            font-size: 15px;
+            opacity: 0.95;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            color: white !important;
+        }
+        
+        .content {
+            padding: 20px 50px 25px;
+        }
+        
+        .intro {
+            font-size: 13px;
+            line-height: 1.5;
+            color: #333 !important;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .services {
+            margin-bottom: 18px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #D97706 !important;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 22px;
+            background: #D97706 !important;
+            margin-right: 10px;
+            border-radius: 2px;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+        
+        .service-card {
+            background: #f8f9fa !important;
+            padding: 12px 10px;
+            border-radius: 8px;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(26, 77, 122, 0.2);
+            border-color: #D97706 !important;
+        }
+        
+        .service-icon {
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+        
+        .service-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #333 !important;
+        }
+        
+        .expertise {
+            background: #f8f9fa !important;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 18px;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        
+        .expertise-content {
+            font-size: 12px;
+            line-height: 1.5;
+            color: #555 !important;
+        }
+        
+        .credentials {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 18px;
+        }
+        
+        .credential {
+            flex: 1;
+            background: #f8f9fa !important;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #D97706 !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        
+        .credential-title {
+            font-weight: 600;
+            color: #D97706 !important;
+            margin-bottom: 5px;
+            font-size: 12px;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        
+        .credential-detail {
+            font-size: 13px;
+            color: #666 !important;
+            line-height: 1.4;
+        }
+        
+        .cta {
+            background: #1A4D7A !important;
+            color: white !important;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        
+        .cta-text {
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-weight: 400;
+            color: white !important;
+        }
+        
+        .cta-email {
+            display: inline-block;
+            background: #D97706 !important;
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        
+        .cta-email:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        @media print {
+            body {
+                background: #1A4D7A !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            .header {
+                background: #1A4D7A !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            .cta {
+                background: #1A4D7A !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .credentials {
+                flex-direction: column;
+            }
+            
+            .header, .content {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">L'Optimist</div>
+            <div class="tagline">Operational Efficiency Through Smarter Workflows</div>
+        </div>
+        
+        <div class="content">
+            <div class="intro">
+                After years as a Data Scientist and Product Manager, I noticed teams 
+                weren't struggling because they lacked talent: they were struggling 
+                because of inefficient workflows. Too many systems that don't talk to each other. 
+                Too many misaligned priorities between teams. Too much time managing processes instead of driving outcomes.
+                Now I help businesses streamline operations and find clarity and flow in how they operate.
+            </div>
+            
+            <div class="services">
+                <h2 class="section-title">How I Help</h2>
+                <div class="service-grid">
+                    <div class="service-card">
+                        <div class="service-icon">📋</div>
+                        <div class="service-title">Project Management</div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🤝</div>
+                        <div class="service-title">Client Engagement</div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">⚡</div>
+                        <div class="service-title">Workflow Automation</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="expertise">
+                <h2 class="section-title">What I Do</h2>
+                <div class="expertise-content">
+                    With 10+ years as a Product Manager and Data Scientist consulting 
+                    for for-profit and non-profit clients, now I help companies find clarity 
+                    in how they operate. From automating reporting to strengthening client 
+                    engagement to improving cross-team communication: AI-powered when it 
+                    makes sense, human-centered always. Whether you're drowning in tools 
+                    or losing time to handoffs, small tweaks can save hours every week.
+                </div>
+            </div>
+            
+            <div class="credentials">
+                <div class="credential">
+                    <div class="credential-title">EDUCATION</div>
+                    <div class="credential-detail">MS in Applied Mathematics (Machine Learning & Computer Vision)<br>BA in International Studies, University of Chicago</div>
+                </div>
+            </div>
+            
+            <div class="cta">
+                <div class="cta-text">If your team's processes feel heavier than they should, let's talk.</div>
+                <a href="mailto:contact@l-optimist.com" class="cta-email">contact@l-optimist.com</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
