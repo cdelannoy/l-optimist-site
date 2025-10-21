@@ -71,7 +71,7 @@ header h1 {
   font-size: 2rem;
   margin: 0;
   font-weight: 600;
-  color: var(--accent-orange);
+  color: var(--light-orange);
 }
 
 .nav-link {
@@ -100,7 +100,7 @@ header h1 {
   font-size: 1.1rem;
   opacity: 0.95;
   margin: 0.5rem 0 0 0;
-  color: var(--accent-orange);
+  color: var(--light-orange);
 }
 
 section {
