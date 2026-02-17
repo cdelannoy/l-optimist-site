@@ -3,93 +3,133 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> Constance Delannoy | AI Consulting - L'Optimist</title>
+  <title>Constance Delannoy | AI Consulting - L'Optimist</title>
   <link rel="icon" type="image/png" href="logo.png" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <div class="header-content">
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <img src="logo.png" alt="L'Optimist" />
+      <span>L'Optimist</span>
+    </a>
+    <div class="nav-links">
+      <a href="operations_audit.html" class="nav-link highlight">Operations Audit</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
       <img src="logo.png" alt="L'Optimist Logo" class="logo" />
-      <div class="header-text">
+      <div class="hero-text">
         <h1>L'Optimist</h1>
-        <p class="tagline">Streamline • Automate • Engage</p>
-      </div>
-      <a href="operations_audit.html" class="nav-link">Operations Audit</a>
-    </div>
-  </header>
-
-  <section class="intro">
-    <h2>About</h2>
-    <div class="about-content">
-      <img src="headshot.png" alt="Constance Delannoy" class="headshot" />
-      <div class="about-text">
-        <p>
-          With over a decade of experience in health tech, I help organizations
-          simplify how they work, bridging the gap between data, technology, and operations.
-          I've partnered with clients to streamline reporting,
-          automate workflows, and design AI-driven solutions that turn complex processes into
-          efficient, scalable systems. I hold an MS in Applied Mathematics, where I focused on
-          machine learning applications in computer vision, and a BA in International Studies
-          from the University of Chicago.
-        </p>
+        <p class="tagline">Streamline &middot; Automate &middot; Engage</p>
       </div>
     </div>
   </section>
 
-  <section class="services">
-    <h2>Services</h2>
-    <ul>
-      <li>Operational Process Optimization</li>
-      <li>AI strategy and automation design</li>
-      <li>Product Management</li>
-      <li>Client & Stakeholder Engagement</li>
-    </ul>
-    <div class="services-download">
-      <a href="services.pdf" class="download-btn" download>Download Services Sheet (PDF)</a>
-    </div>
-  </section>
+  <div class="section-dark">
+    <section class="intro fade-in">
+      <h2>About</h2>
+      <div class="about-content">
+        <img src="headshot.png" alt="Constance Delannoy" class="headshot" />
+        <div class="about-text">
+          <p>
+            With over a decade of experience in health tech, I help organizations
+            simplify how they work, bridging the gap between data, technology, and operations.
+            I've partnered with clients to streamline reporting,
+            automate workflows, and design AI-driven solutions that turn complex processes into
+            efficient, scalable systems. I hold an MS in Applied Mathematics, where I focused on
+            machine learning applications in computer vision, and a BA in International Studies
+            from the University of Chicago.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
 
-  <section class="work">
-    <h2>Recent Work</h2>
+  <div class="section-light">
+    <section class="services fade-in">
+      <h2>Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">📋</div>
+          <h3>Operational Process Optimization</h3>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🤖</div>
+          <h3>AI Strategy &amp; Automation Design</h3>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📦</div>
+          <h3>Product Management</h3>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🤝</div>
+          <h3>Client &amp; Stakeholder Engagement</h3>
+        </div>
+      </div>
+      <div class="services-download">
+        <a href="services.pdf" class="download-btn" download>Download Services Sheet (PDF)</a>
+      </div>
+    </section>
+  </div>
 
-    <div class="work-item">
-      <h3>Medical Device Company</h3>
-      <ul>
-        <li>Automated regulatory reporting by integrating lab and production data, improving compliance.</li>
-        <li>Streamlined operational workflows, reducing manual effort and increasing efficiency.</li>
-      </ul>
-    </div>
+  <div class="section-dark">
+    <section class="work fade-in">
+      <h2>Recent Work</h2>
 
-    <div class="work-item">
-      <h3>Economic and Technology Consulting Firm</h3>
-      <ul>
-        <li>Automated report generation for governmental clients, improving accuracy and turnaround time.</li>
-        <li>Developed a web application to evaluate the ethicality of machine learning models, supporting responsible AI practices.</li>
-      </ul>
-    </div>
-  </section>
+      <div class="work-item">
+        <h3>Medical Device Company</h3>
+        <ul>
+          <li>Automated regulatory reporting by integrating lab and production data, improving compliance.</li>
+          <li>Streamlined operational workflows, reducing manual effort and increasing efficiency.</li>
+        </ul>
+      </div>
 
-  <section class="contact">
-    <h2>Let’s Connect</h2>
-    <p>
-      I'm always open to discussing how AI and automation can create impact in your organization.
-      Reach out anytime at
-      <a href="mailto:contact@l-optimist.com">contact@l-optimist.com</a>.
-    </p>
-    <p>
-      <a href="https://www.linkedin.com/company/loptimistllc" target="_blank">LinkedIn</a> |
-      <a href="https://l-optimist.com" target="_blank">Website</a>
-    </p>
-  </section>
+      <div class="work-item">
+        <h3>Economic and Technology Consulting Firm</h3>
+        <ul>
+          <li>Automated report generation for governmental clients, improving accuracy and turnaround time.</li>
+          <li>Developed a web application to evaluate the ethicality of machine learning models, supporting responsible AI practices.</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <div class="section-light">
+    <section class="contact-section">
+      <h2>Let's Connect</h2>
+      <p>
+        I'm always open to discussing how AI and automation can create impact in your organization.
+      </p>
+      <a href="mailto:contact@l-optimist.com" class="contact-email-btn">contact@l-optimist.com</a>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/company/loptimistllc" target="_blank">LinkedIn</a>
+        <a href="https://l-optimist.com" target="_blank">Website</a>
+      </div>
+    </section>
+  </div>
 
   <footer>
     <p class="footer-tagline">Streamline. Automate. Engage.</p>
-    <p>© <span id="year"></span> L'Optimist. All rights reserved.</p>
+    <p>&copy; <span id="year"></span> L'Optimist. All rights reserved.</p>
   </footer>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
