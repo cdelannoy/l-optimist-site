@@ -160,14 +160,22 @@ body {
   line-height: 1.05;
 }
 
-.hero .tagline {
-  font-size: 0.75rem;
+.hero .tagline-primary {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem;
   font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
   color: var(--accent);
+  margin: 0 0 0.6rem;
+  letter-spacing: -0.5px;
+  line-height: 1.25;
+}
+
+.hero .tagline-sub {
+  font-size: 1.0625rem;
+  font-weight: 400;
+  color: var(--text-muted);
   margin: 0;
-  opacity: 0.85;
+  line-height: 1.55;
 }
 
 /* ========== SECTIONS ========== */
@@ -231,8 +239,10 @@ h3 {
   font-size: 1.0125rem;
   line-height: 1.9;
   color: var(--text-muted);
-  margin: 0;
+  margin: 0 0 1.1rem;
 }
+
+.about-text p:last-child { margin-bottom: 0; }
 
 /* ========== SERVICES ========== */
 .services-grid {
@@ -282,6 +292,15 @@ h3 {
   font-size: 0.9375rem;
   line-height: 1.45;
   padding-top: 0.2rem;
+}
+
+.service-content { flex: 1; }
+
+.service-card p {
+  margin: 0.5rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.65;
 }
 
 .services-download {
@@ -338,6 +357,13 @@ h3 {
 .work-item h3 {
   color: var(--white);
   margin-bottom: 0.75rem;
+}
+
+.work-item > p {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  margin: 0 0 1rem;
 }
 
 ul {
