@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Do you need AI, or just a better spreadsheet? | L'Optimist</title>
+  <meta name="description" content="When someone brings me a problem, the first thing I do is figure out whether a spreadsheet, a script, or a basic workflow tool could solve it." />
+  <link rel="canonical" href="https://www.l-optimist.com/writing/better-spreadsheet/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="L'Optimist" />
+  <meta property="og:title" content="Do you need AI, or just a better spreadsheet?" />
+  <meta property="og:description" content="When someone brings me a problem, the first thing I do is figure out whether a spreadsheet, a script, or a basic workflow tool could solve it." />
+  <meta property="og:url" content="https://www.l-optimist.com/writing/better-spreadsheet/" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="article:published_time" content="2026-04-17" />
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/" class="nav-brand">
+      <img src="/logo.png" alt="L'Optimist" />
+      <span>L'Optimist</span>
+    </a>
+    <div class="nav-links">
+      <a href="/writing/" class="nav-link">Writing</a>
+      <a href="/operations_audit.html" class="nav-link highlight">Free Automation Audit</a>
+    </div>
+  </nav>
+
+  <main class="article">
+    <a href="/writing/" class="article-back">&larr; All writing</a>
+    <header class="article-header">
+      <h1>Do you need AI, or just a better spreadsheet?</h1>
+      <p class="article-dek">Focus on what works.</p>
+      <p class="article-meta"><time datetime="2026-04-17">April 17, 2026</time></p>
+    </header>
+    <div class="article-body">
+<p>A company calls me because they “want AI.” They’ve seen what their competitors are announcing. They’ve read the press. Someone on their leadership team said “we need an AI strategy” and now they’re looking for a consultant.</p>
+<p>So I ask them: what are you trying to do?</p>
+<p>And the answer is almost always something like: we want to automate our reporting, or we want to catch quality issues faster, or we want to pull data from a source and act on it without so much manual work.</p>
+<p>None of those need AI running in production. Most of them don’t even need custom software.</p>
+<h2>The script test</h2>
+<p>When someone brings me a problem, the first thing I do is figure out whether a spreadsheet, a script, or a basic workflow tool could solve it. Not because I’m trying to undersell the project, but because the simplest solution that works is the one people actually use.</p>
+<p>I work with a medical device manufacturer that gets regulatory and audit requests several times a year. Each cycle used to mean pulling in extra people to manually scrape government recall databases, cross-reference their product lines, and compile everything into submission documents. It was slow, repetitive, and expensive.</p>
+<p>They came to me wanting AI. And we did use AI, but not in the way they expected. We used it to build the tool. The tool itself is a script that checks recall databases, matches against their products, and feeds the results into their existing audit workflow. No agentic AI running in production, no IP exposure, no black box making regulatory decisions.</p>
+<p>The result: the regulatory team isn’t burnt out after an audit cycle anymore. The tool works across all their product lines and markets without code changes, because we spent the time upfront understanding exactly what the process needed.</p>
+<p>AI was the right tool for building it. It would have been the wrong tool to run it. That distinction matters, and most vendors won’t make it for you.</p>
+<h2>Why companies overbuy</h2>
+<p>There are a few reasons this happens:</p>
+<ul><li><strong>Vendors sell what they have.</strong> If an AI-powered product company walks in the door, they’re going to recommend AI. That’s not malice, it’s just the structure of the incentive. They don’t get paid to tell you that you need a cron job and a Python script.</li><li><strong>“AI” is easier to get budget for.</strong> Telling your board “we’re investing in AI” sounds better than “we’re automating a manual process with a script.” Even though the second option is cheaper, faster, and more likely to work.</li><li><strong>Nobody did the discovery work.</strong> This is the biggest one. If you skip the step where you map the actual process, understand the edge cases, and figure out what the end user needs, you’re going to overbuild. Discovery is where you learn that the problem is simpler than it looks, or more complicated in ways that AI won’t fix.</li></ul>
+<h2>How to avoid it</h2>
+<p>Before you talk to a vendor, or before you greenlight an internal AI project, try answering these questions:</p>
+<ul><li><strong>Can someone on your team explain the current manual process in under 15 minutes?</strong> If not, you need process mapping before you need technology.</li><li><strong>Is the input data structured and consistent?</strong> If yes, you probably don’t need a model to interpret it. A script that reads a database or an API is cheaper and more predictable.</li><li><strong>What happens when the automated system gets it wrong?</strong> If the failure mode is “someone reviews it manually anyway,” you might just need a better alert, not a smarter system.</li><li><strong>Does this need to learn and improve over time, or is the logic stable?</strong> If the rules don’t change much, a rules-based system will outperform a learning system in cost, speed, and transparency.</li></ul>
+<p>If you answered “the process is stable, the data is structured, and a human reviews the output anyway,” you probably don’t need AI in production. You might still use it to build the solution. But the thing that runs every day should be something your team can understand and trust.</p>
+<h2>The real question</h2>
+<p>I’m not against AI (I use it every day!). Some problems genuinely need it. But a lot of the AI projects I see in health companies and other regulated industries are solutions looking for problems. The technology is ahead of the need.</p>
+<p>The question to start with isn’t “how do we use AI?” It’s “what’s the simplest thing that would solve this problem?” Sometimes the answer is a spreadsheet. Sometimes it’s a script built with AI. Sometimes it really is a model running in production. But you won’t know until you’ve done the discovery.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p class="footer-tagline">Fractional Chief of AI</p>
+    <p>&copy; <span id="year"></span> L'Optimist. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

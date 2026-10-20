@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How I build with Claude and sensitive data | L'Optimist</title>
+  <meta name="description" content="A short and practical take on the sandbox + synthetic data setup I use when client IP can&#x27;t leave their environment." />
+  <link rel="canonical" href="https://www.l-optimist.com/writing/sensitive-data/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="L'Optimist" />
+  <meta property="og:title" content="How I build with Claude and sensitive data" />
+  <meta property="og:description" content="A short and practical take on the sandbox + synthetic data setup I use when client IP can&#x27;t leave their environment." />
+  <meta property="og:url" content="https://www.l-optimist.com/writing/sensitive-data/" />
+  <meta property="og:image" content="https://www.l-optimist.com/writing/img/sensitive-data.jpg" />
+  <meta property="og:image:width" content="1536" />
+  <meta property="og:image:height" content="1024" />
+  <meta property="og:image:alt" content="Illustration of a robot playing in a sandbox on a desk in an office." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="article:published_time" content="2026-06-26" />
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/" class="nav-brand">
+      <img src="/logo.png" alt="L'Optimist" />
+      <span>L'Optimist</span>
+    </a>
+    <div class="nav-links">
+      <a href="/writing/" class="nav-link">Writing</a>
+      <a href="/operations_audit.html" class="nav-link highlight">Free Automation Audit</a>
+    </div>
+  </nav>
+
+  <main class="article">
+    <a href="/writing/" class="article-back">&larr; All writing</a>
+    <header class="article-header">
+      <h1>How I build with Claude and sensitive data</h1>
+      <p class="article-dek">A short and practical take on the sandbox + synthetic data setup I use when client IP can't leave their environment.</p>
+      <p class="article-meta"><time datetime="2026-06-26">June 26, 2026</time></p>
+    </header>
+    <div class="article-body">
+<p>I’m currently building tools for clients using Claude Code. Those tools are designed to handle highly sensitive/IP data, yet Claude hasn’t seen any of it, thanks to the use of synthetic data or schema descriptions. The real data only meets the code in production, on the client’s infrastructure, where no AI lives.</p>
+<figure><img src="/writing/img/sensitive-data.jpg" alt="Illustration of a robot playing in a sandbox on a desk in an office." loading="lazy" /></figure>
+<h2>The setup</h2>
+<p>Successfully sandboxing a coding agent takes a small amount of setup, almost no ongoing effort, and most of the cleverness is in choosing what the agent actually needs to see in order to be useful. My setup takes four steps, none of them complicated on their own.</p>
+<h3>1. The split</h3>
+<p>Claude Code lives on my machine. Real data lives on the client’s infrastructure. The two are kept geographically separated like exes at a wedding. They never have to be on the same machine because Claude is writing the code, then the code runs against the data on the client’s side.</p>
+<h3>2. Synthetic data</h3>
+<p>When I need to test, I generate values that look like the real values. For the regulatory tools I built last year for a medical manufacturer, one of them took bills of materials (BOMs) as input. To test without touching real BOMs, I generated fake ones, sometimes with a script, sometimes by hand. This means I sat at my keyboard typing fake part numbers like a 1996 data-entry clerk (ah, the AI times!). The skill here is in the messy edges: part numbers with internal conventions, the same supplier listed three different ways across rows.</p>
+<h3>3. Schema-only conversations</h3>
+<p>When Claude needs to know the shape of a database without seeing what’s in it, I share the schema and not the rows. Column names, types, and a short description of what each field means (e.g., “patient_id, varchar, unique per encounter, never reused”). That’s usually enough to get useful design help. There’s also a side effect: walking the schema with Claude tends to surface inconsistencies in the client’s data that nobody had named before (which can quietly add weeks of scope before I’ve written a line of code -- yay job security!).</p>
+<h3>4. Letting go of Claude</h3>
+<p>Claude writes the code. The code then runs without Claude in the path. The regulatory tool mentioned above runs on demand against the live BOMs and the client’s product catalog, and there is no LLM in the production path. The tool was built by Claude, and the tool runs on its own. The compliance team uses the output. Claude has never seen the product catalog.</p>
+<h2>The one place you can skip all of this</h2>
+<p>If your team is on Claude Enterprise (or another tool with a real BAA, zero-retention guarantee, and audit-ready logging), the contract does what the sandbox does manually. Data doesn’t go into training. The vendor can’t see it for “service improvement.” Logs are scoped and deletable. You can paste the real thing and move on.</p>
+<p>The trade-off is cost. Enterprise tiers are a real budget line. The payoff is that you don’t engineer around the privacy concern on every project.</p>
+<h2>Final note</h2>
+<p>This whole space is moving fast and what works today will need revisiting in six months. The discipline is to keep the question open: what’s the safest thing I can do that still lets me ship? My answer right now is the four-piece setup above plus the Claude Enterprise exit hatch when the contract is in place.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p class="footer-tagline">Fractional Chief of AI</p>
+    <p>&copy; <span id="year"></span> L'Optimist. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
