@@ -308,7 +308,8 @@ h3 {
   margin-top: 2.5rem;
 }
 
-.download-btn {
+.download-btn,
+.posts-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -328,7 +329,8 @@ h3 {
   font-size: 0.9em;
 }
 
-.download-btn:hover {
+.download-btn:hover,
+.posts-btn:hover {
   background: var(--accent-dim);
   color: var(--accent);
   border-color: var(--accent);
@@ -348,6 +350,11 @@ h3 {
 }
 
 .work-item:last-child { margin-bottom: 0; }
+
+.work-more {
+  text-align: center;
+  margin-top: 2.5rem;
+}
 
 .work-item:hover {
   background: rgba(56, 189, 248, 0.035);
