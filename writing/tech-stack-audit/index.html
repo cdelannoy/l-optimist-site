@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Most of it wasn’t a software problem: findings from a tech stack audit | L'Optimist</title>
+  <meta name="description" content="After several weeks of interviews with each department, the real upside of AI for that company turned out to be building internal capacity and buffing up the data systems they already have, most of which needs no new vendors." />
+  <link rel="canonical" href="https://www.l-optimist.com/writing/tech-stack-audit/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="L'Optimist" />
+  <meta property="og:title" content="Most of it wasn’t a software problem: findings from a tech stack audit" />
+  <meta property="og:description" content="After several weeks of interviews with each department, the real upside of AI for that company turned out to be building internal capacity and buffing up the data systems they already have, most of which needs no new vendors." />
+  <meta property="og:url" content="https://www.l-optimist.com/writing/tech-stack-audit/" />
+  <meta property="og:image" content="https://www.l-optimist.com/writing/img/tech-stack-audit-pyramid.png" />
+  <meta property="og:image:width" content="3200" />
+  <meta property="og:image:height" content="1800" />
+  <meta property="og:image:alt" content="Four-layer pyramid: data at the base, then process, then software and AI, with insights at the top." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="article:published_time" content="2026-10-19" />
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/" class="nav-brand">
+      <img src="/logo.png" alt="L'Optimist" />
+      <span>L'Optimist</span>
+    </a>
+    <div class="nav-links">
+      <a href="/writing/" class="nav-link">Writing</a>
+      <a href="/operations_audit.html" class="nav-link highlight">Free Automation Audit</a>
+    </div>
+  </nav>
+
+  <main class="article">
+    <a href="/writing/" class="article-back">&larr; All writing</a>
+    <header class="article-header">
+      <span class="work-tag">Case study</span>
+      <h1>Most of it wasn’t a software problem: findings from a tech stack audit</h1>
+      <p class="article-meta"><time datetime="2026-10-19">October 19, 2026</time></p>
+    </header>
+    <div class="article-body">
+<p>At a time when anyone can make an app with AI, one of my clients is overwhelmed with vendor solicitations, demos for new products and add-ons for their existing software. Unsure of the value proposition for all these tools, their management team came to me and asked me to do an audit of their tech stack, to help answer the question: how much of what hurts could be fixed with the tools they already have?</p>
+<p>After several weeks of interviews with each department, the real upside of AI for that company turned out to be building internal capacity and buffing up the data systems they already have, most of which needs no new vendors.</p>
+<h2>The situation</h2>
+<p>The company has been around for three quarters of a century, hence much of its technological stack has grown by accretion, which means that every process works and nobody designed any of them. Knowledge lives in people’s heads, and the processes still carry the shape of the years when everything moved on paper. The practical result is that people keep their own spreadsheets alongside the system, so they can check their work against something they can see.</p>
+<h2>What discovery found</h2>
+<p>I interviewed every department, and created diagrams of each process that each department touches: where a number enters, how it gets handled, what output comes from it. The result was a large table of around 100 pain points across a ~150 person organization.</p>
+<p>Of all the pain points, about half could be resolved within a department, while half involved 2+ divisions and a major mission-critical process. Note that this split is the reason for assessing a stack across departments rather than one at a time, and why I’d recommend that any decision maker needs to have a full picture of the pain point it’s trying to solve before booking a vendor demo.</p>
+<h2>What I recommended</h2>
+<figure><img src="/writing/img/tech-stack-audit-pyramid.png" alt="Four-layer pyramid: data at the base, then process, then software and AI, with insights at the top." loading="lazy" /></figure>
+<p>The recommendations sort into three levels.</p>
+<ol><li><strong>Process issues disguised as software shortcomings:</strong> sometimes software is just a bandaid on a bad process. In this case, my client had trouble tracking orders between entry and shipping: somewhere along the way orders would go missing, and the person responsible for shipping had to track them through the whole chain to figure out who dropped the ball. This came from a legacy process where staff putting in orders had to print labels by hand and walk them to the production floor and shipment. With technology and ERPs, that process was outdated and created confusion more than anything. A simple process fix consisting of using ERP statuses and changing who prints shipping labels would fix the whole pain point and restore trust in the ERP.</li><li><strong>Using current software correctly:</strong> The ERP fell short on delivering the level of customization the client needed. However, by virtue of being on the older side and built rather soundly, it is also highly customizable. This is a place where AI internally can do a lot of good. We are currently testing how to add interfaces to the ERP to allow for alerts and extra fields within the ERP. The specific use case here is using Claude to vibe code in some obscure but straightforward programming language, which is something the team can do by itself.</li><li><strong>Augmenting existing software with custom data and a better interface:</strong> Any ERP tends to be the backbone of a company, and is only as good as the data it contains. Especially while trying to get better insight from AI into production, sales or other processes, we need to make sure the company has data lakes to retain as much information as possible in an organized way. This item actually didn’t necessitate any new infrastructure, only a better understanding of the database the company’s systems rest on, and how to use them to improve data capture.</li></ol>
+<h2>The hindsight</h2>
+<p>A company’s problems tend to have two sources: some are based on processes that need change or updating, and some are based on information that is not accurately or appropriately being captured. Software may be part of the solution, but the biggest gains here came from two things: <strong>capturing the data well</strong>, and <strong>making sure the processes around it fit the teams involved</strong>. AI helps with both, and gives internal teams a practical way to capture (ex: through vibe coding a tool), view (ex: by connecting it to existing infrastructure) and analyze (ex: by creating visuals and summarizing insights). Sometimes new vendors are necessary, to stand up new infrastructure or to support a niche pain point, but a company that has been running for a while mostly needs to use what is already there.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p class="footer-tagline">Fractional Chief of AI</p>
+    <p>&copy; <span id="year"></span> L'Optimist. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
