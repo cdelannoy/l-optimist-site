@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Built with AI, runs without it: automating an FDA adverse event search | L'Optimist</title>
+  <meta name="description" content="Here is how I built an automation to reduce the process’ time from about 2 weeks down to a few hours." />
+  <link rel="canonical" href="https://www.l-optimist.com/writing/fda-safety-search/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="L'Optimist" />
+  <meta property="og:title" content="Built with AI, runs without it: automating an FDA adverse event search" />
+  <meta property="og:description" content="Here is how I built an automation to reduce the process’ time from about 2 weeks down to a few hours." />
+  <meta property="og:url" content="https://www.l-optimist.com/writing/fda-safety-search/" />
+  <meta property="og:image" content="https://www.l-optimist.com/writing/img/fda-safety-search-diagram.png" />
+  <meta property="og:image:width" content="2360" />
+  <meta property="og:image:height" content="1330" />
+  <meta property="og:image:alt" content="Diagram of the FDA safety search: product codes, a date range and an optional manufacturer and product name go in; MAUDE counts from the openFDA API and scraped FDA TPLC, UK MHRA and France ANSM pages come back; rules filter and format the results into a Word document." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="article:published_time" content="2026-09-28" />
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/" class="nav-brand">
+      <img src="/logo.png" alt="L'Optimist" />
+      <span>L'Optimist</span>
+    </a>
+    <div class="nav-links">
+      <a href="/writing/" class="nav-link">Writing</a>
+      <a href="/operations_audit.html" class="nav-link highlight">Free Automation Audit</a>
+    </div>
+  </nav>
+
+  <main class="article">
+    <a href="/writing/" class="article-back">&larr; All writing</a>
+    <header class="article-header">
+      <span class="work-tag">Case study</span>
+      <h1>Built with AI, runs without it: automating an FDA adverse event search</h1>
+      <p class="article-meta"><time datetime="2026-09-28">September 28, 2026</time></p>
+    </header>
+    <div class="article-body">
+<p>When a medical device company submits a new product for certification, or an existing product for re-approval, someone has to show what the FDA’s public records say about the devices or ones like it, which means pulling recalls and adverse event reports, reading through them, and writing them up in the format the submission needs.</p>
+<p>The process is fairly cumbersome and tedious, which is the polite way of saying it involves a lot of copying numbers out of government websites. Here is how I built an automation to reduce the process’ time from about 2 weeks down to a few hours.</p>
+<h2>The situation</h2>
+<p>The company is a dental device manufacturer with a large product line, and every submission needed an FDA safety search: the MAUDE adverse event reports, the recall history and reported problems relevant to the product, and safety notices from the UK and French regulators, all written up as a submission-ready document.</p>
+<p>The regulatory lead did this herself, with help from interns when she had them, and a single submission took about two weeks of combined time between her and an intern. Audit and submission timelines are tight, and with the number of products the company carries, those two weeks came out of time she didn’t have, so the run-up to each submission was a stressful stretch for her.</p>
+<h2>The ask</h2>
+<p>My task was straightforward: go talk to the regulatory lead.</p>
+<p>She walked me through the process she followed, step by step, and then showed me the completed form from a previous product’s submission.</p>
+<h2>The discovery</h2>
+<p>This was a straight automation of a well-defined process, owned by someone who knew exactly what good output looked like. The completed form became the spec and settled the format and the definition of done before I had written any code.</p>
+<p>What the form couldn’t show were the cases the regulatory lead carried in her head. Things such as a standard sentence stating that none of the reported events involve the company’s own product, when that’s true, and the product name written into the table when the user specifies one. Both came from scenarios she knew from past submissions and I didn’t, and came from user testing after the app was live.</p>
+<h2>The build</h2>
+<figure><img src="/writing/img/fda-safety-search-diagram.png" alt="Diagram of the FDA safety search: product codes, a date range and an optional manufacturer and product name go in; MAUDE counts from the openFDA API and scraped FDA TPLC, UK MHRA and France ANSM pages come back; rules filter and format the results into a Word document." loading="lazy" /></figure>
+<p>She enters one or more product codes and a date range, and optionally the manufacturer and the product name. The tool pulls MAUDE report counts from openFDA, which is a stable public API, and reads three public web pages directly: the FDA’s TPLC database for recalls and reported device and patient problems, the UK MHRA’s device alerts, and France’s ANSM safety notices. It then uses rules to turn what comes back into tables in a Word document ready to drop into the submission.</p>
+<p>There is no model in it (I know! It’s 2026!). The work is one API call, three page scrapes and a set of rules, and every row in the output traces back to a public record. I built it with Claude Code, so AI was part of writing the tool, but the tool itself runs only code and rules.</p>
+<p>The two corrections from after launch are rules as well: if none of the reported events involve the company’s own product, the standard sentence goes in, and if the user gives a product name, it goes into the table. Anything else the regulatory lead knows from past submissions can be added the same way.</p>
+<p>I use a three-level ladder to decide what to build: use what the platform already does, bridge with a model when the platform can’t produce what’s needed, and build when neither holds. This one is level 3, a build, and it uses no model.</p>
+<p>It handles any product in their catalogue without code changes, but it doesn’t handle a new source without code changes, which comes up again below.</p>
+<figure><img src="/writing/img/fda-safety-search-ladder.png" alt="The ladder: 1, use what the platform already does; 2, bridge with a model; 3, build. This tool is level 3, a build with no AI." loading="lazy" /></figure>
+<h2>The cost</h2>
+<p>It took about a month to build. On the client side, the cost was the regulatory lead’s time for the walkthrough, the example form and the corrections after launch.</p>
+<h2>The aftermath</h2>
+<p>The regulatory lead and her interns have used it for every submission since it launched in spring 2025. A search that took about two weeks of combined time now takes a couple of hours, and nobody has gone back to doing it by hand.</p>
+<p>Those couple of hours include her review, since the tool writes the document but she still reads it before it goes into the submission.</p>
+<h2>The hindsight</h2>
+<p>Three of the four sources are web pages rather than APIs, and each one breaks in its own way whenever the FDA, the MHRA or the ANSM redesigns it. Regulators do not, as a rule, email the people reading their websites before a redesign. It means I stay involved for as long as the tool runs: whenever something changes on one of those external sites, the fix comes back to me.</p>
+<p>The sources move on their own schedule, too: the FDA is replacing MAUDE with AEMS, and submission requirements change. If you’re commissioning a tool like this, ask before the build which of its data sources someone else controls, because those are the ones that will break it.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p class="footer-tagline">Fractional Chief of AI</p>
+    <p>&copy; <span id="year"></span> L'Optimist. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
