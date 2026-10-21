@@ -791,21 +791,21 @@ a:hover {
   margin: 2.5rem 0 1.25rem;
 }
 
-.home-actions .contact-email-btn { margin: 0; }
+.home-actions .contact-email-btn { margin: 0; height: 48px; padding-top: 0; padding-bottom: 0; }
 
 .icon-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
   color: var(--text);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: var(--radius-sm);
   transition: all 0.2s;
 }
 
-.icon-btn svg { width: 20px; height: 20px; }
+.icon-btn svg { width: 22px; height: 22px; }
 
 .icon-btn:hover {
   color: var(--white);
