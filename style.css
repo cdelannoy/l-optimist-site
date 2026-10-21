@@ -718,6 +718,8 @@ a:hover {
 .writing-index section { margin-bottom: 3.5rem; }
 .writing-index section:last-child { margin-bottom: 0; }
 
+.writing-index .work-item { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.1); border-left-color: var(--accent); }
+.writing-index .work-item:hover { background: rgba(56, 189, 248, 0.08); }
 .writing-index .work-item h3 { margin-top: 0; }
 .writing-index .work-item h3 a { color: var(--white); }
 .writing-index .work-item h3 a:hover { color: var(--accent); }
