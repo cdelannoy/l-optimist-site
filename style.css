@@ -750,6 +750,14 @@ a:hover {
   .nav-link { padding: 0.35rem 0.6rem; font-size: 0.8125rem; white-space: nowrap; }
 }
 
+@media (max-width: 400px) {
+  .navbar { padding: 0 0.75rem; }
+  .nav-brand { gap: 0.4rem; }
+  .nav-brand span { font-size: 0.875rem; }
+  .nav-links { gap: 0.1rem; }
+  .nav-link { padding: 0.35rem 0.45rem; font-size: 0.78rem; }
+}
+
 /* ========== HOME ========== */
 .home {
   max-width: 680px;
@@ -791,8 +799,8 @@ a:hover {
   justify-content: center;
   width: 46px;
   height: 46px;
-  color: var(--text-muted);
-  border: 1px solid var(--border);
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: var(--radius-sm);
   transition: all 0.2s;
 }
@@ -814,7 +822,7 @@ a:hover {
 
 .work-list li {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) 6rem;
+  grid-template-columns: 15rem minmax(0, 1fr) auto;
   gap: 1rem;
   align-items: baseline;
   padding: 0.95rem 0;
@@ -824,7 +832,7 @@ a:hover {
 }
 
 .work-list li:first-child { border-top: 1px solid var(--border); }
-.wl-client { color: var(--text); }
+.wl-client { color: var(--text); white-space: nowrap; }
 .wl-system { color: var(--text-muted); }
 .wl-link { text-align: right; font-size: 0.875rem; font-weight: 500; }
 
@@ -833,9 +841,9 @@ a:hover {
   .home h1 { font-size: 2rem; }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .work-list li { grid-template-columns: minmax(0, 1fr) auto; gap: 0.15rem 1rem; }
-  .wl-client { grid-column: 1 / -1; }
+  .wl-client { grid-column: 1 / -1; white-space: normal; }
 }
 
 @media (max-width: 480px) {
