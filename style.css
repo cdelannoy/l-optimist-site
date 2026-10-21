@@ -714,6 +714,7 @@ a:hover {
   margin: 0 0 3rem;
 }
 
+.writing-index .article-back { display: block; width: fit-content; margin-left: auto; }
 .writing-index section { margin-bottom: 3.5rem; }
 .writing-index section:last-child { margin-bottom: 0; }
 
