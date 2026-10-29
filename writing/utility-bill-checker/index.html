@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Where do those bills go: automating bill processing (part 1) for a property manager | L'Optimist</title>
+  <meta name="description" content="A property management company with about 3,500 units asked me to automate their utility billing. Here is the story." />
+  <link rel="canonical" href="https://www.l-optimist.com/writing/utility-bill-checker/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="L'Optimist" />
+  <meta property="og:title" content="Where do those bills go: automating bill processing (part 1) for a property manager" />
+  <meta property="og:description" content="A property management company with about 3,500 units asked me to automate their utility billing. Here is the story." />
+  <meta property="og:url" content="https://www.l-optimist.com/writing/utility-bill-checker/" />
+  <meta property="og:image" content="https://www.l-optimist.com/writing/img/utility-bill-checker.png" />
+  <meta property="og:image:width" content="1418" />
+  <meta property="og:image:height" content="948" />
+  <meta property="og:image:alt" content="Screenshot of the app's upload screen: drop a scanned utility bill, choose the utility tracker, then run the check." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="article:published_time" content="2026-10-29" />
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/" class="nav-brand">
+      <img src="/logo.png" alt="L'Optimist" />
+      <span>L'Optimist</span>
+    </a>
+    <div class="nav-links">
+      <a href="/case-studies/" class="nav-link">Case studies</a>
+      <a href="/blog/" class="nav-link">Blog</a>
+      <a href="https://calendar.app.google/XCDZCrCstxe7Dhdy8" class="nav-link highlight" target="_blank" rel="noopener">Book an intro</a>
+    </div>
+  </nav>
+
+  <main class="article">
+    <a href="/blog/" class="article-back">&larr; Blog</a>
+    <header class="article-header">
+      <span class="work-tag">Case study</span>
+      <h1>Where do those bills go: automating bill processing (part 1) for a property manager</h1>
+      <p class="article-meta"><time datetime="2026-10-29">October 29, 2026</time></p>
+    </header>
+    <div class="article-body">
+<p>A property management company with about 3,500 units asked me to automate their utility billing. Here is the story.</p>
+<h2>The situation</h2>
+<p>Two hundred utility bills arrive every month across those units, on paper, by snail mail. One person receives them. A second pays them and marks up the ones that are unclear (such as ones that don't have a matching address in their system). A third person reads the bill, decides who is responsible for it, works out what share a tenant owes when a unit changed hands mid-period, logs it, and attaches it to a unit or a building.</p>
+<p>Staff use two systems for logging: they have a spreadsheet on a shared drive where they log incoming bills, and they log tenant expenses (when relevant) in tenants' ledgers in their ERP.</p>
+<h2>What they asked for</h2>
+<p>The company had written an SOP, which I read, and I then had a call with the people who run the process. What they wanted, in their words, was that the work is "very time consuming and detailed and a lot of follow-up with the utility company", and that any way to automate it "would just help us along and help reduce the amount of time". They had one main goal:</p>
+<blockquote><p>We don't want to sacrifice the quality because that's the main thing here. We got to track to the day what people owe us or what we owe, or what the owner owes.</p></blockquote>
+<p>Their main concern with automation was that they didn't want to replace their spreadsheet, because they liked having control over it and they felt comfortable with Excel. They worried that my automation would push control to an obscure "AI" and that they were going to lose agency over their own numbers. Spoiler alert: none of the app actually had any AI.</p>
+<h2>The discovery</h2>
+<p>The SOP they had described the steps but left out some important judgment calls.</p>
+<ul><li>Unspoken rules: a bill of $10.40 covering two days between tenants is charged to nobody, because it is not reasonable to bill someone for two days of an empty unit. A high bill for the same two days becomes a conversation about a 50/50 split with the property manager. All this is common sense, but tracking these decisions matters when you are trying to automate a process.</li><li>Unit identification: their ERP returned current tenants by property rather than by unit, so in a multi-unit building the pairing of a bill to a tenant is genuinely unknown. Software that matched automatically would charge the wrong person a fraction of the time, so we needed manual input there.</li><li>Mismatched units: A single unit may have two names; for instance, a utility bill may call a unit "unit 2" where the ERP calls it "1F". Once again, manual input was needed here.</li><li>Misc. charges: sometimes utility companies will draw charges for obscure reasons. The app needed to flag those charges for follow-up with the utility itself to make sure they were appropriate and decide how to allocate them (sometimes even utility staff members didn't know what they were for!).</li></ul>
+<h2>The build</h2>
+<p>The solution I built consists of a desktop application that reads a scanned bill, looks the service address up in the ERP, resolves the property, walks a user through selecting the appropriate unit and tenant directly from the app, computes the prorated share, posts the charge, writes the row to the spreadsheet, files the bill and drafts the note to the property manager.</p>
+<figure><img src="/writing/img/utility-bill-checker.png" alt="Screenshot of the app's upload screen: drop a scanned utility bill, choose the utility tracker, then run the check." loading="lazy" /></figure>
+<p>None of it is AI: the read of the scanned bill is done through a parser, and every other lookup is done through matching.</p>
+<p>What the team gained by digitalizing this process, concretely, is:</p>
+<ul><li>time: communication between several systems all accessible through the app saves people from opening a bunch of different windows during a single process, making the process less time-consuming.</li><li>an audit trail: everyone signs in with their own ERP login rather than a shared service account, so each charge is attributed to the real person in the ERP's own audit trail, and each person's permissions are enforced by the ERP's server rather than by my software.</li></ul>
+<p>Most importantly, the team retains their control over each part of the system, and their logging spreadsheet still belongs to them.</p>
+<h2>The cost</h2>
+<p>It took me a month to build the app. ROI-wise, the client and I have assumed that it brought the process from 20 minutes a bill down to 8, with a second review of 5 minutes down to 3, which is about 46.7 staff hours a month across 200 bills. This means the client pays the build back within nine months.</p>
+<h2>The future</h2>
+<p>Building this application has made the team realize that they could gain more efficiency if they digitalized the entire process vertically. Therefore, the next step is to convert paper bills to digital so that they end up in a generic company mailbox. From there, the ERP they already pay for has a feature that can take bills in digitally, so we'd only need to implement a trigger that sends the bills to the ERP. The app does the rest of the work of placing them in the appropriate places and charging the right tenants. This seems simple in retrospect, but building in stages allows the team to feel confident with every part of the chain, and most importantly, to ensure they retain control over every link.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p class="footer-tagline">Back-office automation</p>
+    <p>&copy; <span id="year"></span> L'Optimist. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
